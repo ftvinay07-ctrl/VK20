@@ -1,0 +1,23 @@
+int main(void)
+{
+    HAL_Init();
+
+    SystemClock_Config();
+
+    MX_GPIO_Init();
+    MX_I2C1_Init();
+
+    while(1)
+    {
+        HAL_I2C_Mem_Write(&hi2c1,
+
+                          0xA0,
+                          0x00,
+                          I2C_MEMADD_SIZE_8BIT,
+                          &data,
+                          1,
+                          100);
+
+        HAL_Delay(1000);
+    }
+}
